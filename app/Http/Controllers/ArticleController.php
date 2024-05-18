@@ -10,8 +10,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
-class ArticleController extends Controller
+class ArticleController extends Controller implements HasMiddleware
 {
+    public static function middleware()
+    {
+        return [
+            new Middleware('auth', except: ['index', 'show', 'byCategory', 'byUser']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */
@@ -33,7 +39,26 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:articles|min:5',
+            'subtitle' => 'required|min:5',
+            'body' => 'required|min:10',
+            'image' => 'image|required',
+            'category' => 'required',
+        ]);
+
+
+        $article = Article::create([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'body' => $request->body,
+            'image' => $request->file('image')->store('public/image'),
+            'category_id' => $request->category,
+            'user_id' => Auth::user()->id
+
+        ]);
+
+        return redirect(route('homepage'))->with('message', 'Articolo creato con successo');
     }
 
     /**

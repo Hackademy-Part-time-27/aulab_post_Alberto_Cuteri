@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-info text-center">
+    <div class="container-fluid p-5 bg-info-subtle text-center">
         <div class="row justify-content-center">
             <div class='col-12'>
                 <h1 class="display-1">Inserisci un articolo</h1>
@@ -9,7 +9,8 @@
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
-                <form class="card p-5 shadow" action="{{route('article.store')}}" method="POST" enctype="multipart/form-data">    
+                <form action="{{route('article.store')}}" method="POST" class="card p-5 shadow" enctype="multipart/form-data"> 
+                    @csrf    
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo</label>
                         <input type="text" name="title" class="form-control" id='title' value="{{ old('title')}}">
