@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RevisorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,3 +17,10 @@ Route::get('/article/create', [ArticleController::class, 'create'])->name('artic
 Route::post('/article/store', [ArticleController::class, 'store'])->name('article.store');
 Route::get('/article/index', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/article/show/{article}', [ArticleController::class, 'show'])->name('article.show');
+Route::get('/article/category/{category}', [ArticleController::class, 'byCategory'])->name('article.byCategory');
+Route::get('/article/user/{user}', [ArticleController::class, 'byUser'])->name('article.byUser');
+Route::get('/careers', [PublicController::class, 'careers'])->name('careers');
+Route::post('/careers/submit', [PublicController::class, 'careersSubmit'])->name('career.submit');
+Route::get('/article/search', [ArticleController::class, 'articleSearch'])->name('article.search');
+
+
