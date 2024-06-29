@@ -7,6 +7,12 @@
         </div>
     </div>
 
+    @if (session('alert'))
+    <div class="alert alert-danger">
+        {{session('alert')}}
+        </div>
+    @endif
+
     @if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}
