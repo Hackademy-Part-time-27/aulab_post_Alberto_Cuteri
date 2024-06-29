@@ -15,17 +15,13 @@ class CareerRequestMail extends Mailable
 
 public $info;
 
-    /**
-     * Create a new message instance.
-     */
+
     public function __construct($info)
     {
         $this->info = $info;
     }
 
-    /**
-     * Get the message envelope.
-     */
+
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -33,9 +29,7 @@ public $info;
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
+
     public function content(): Content
     {
         return new Content(

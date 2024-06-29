@@ -13,7 +13,7 @@
                   <a class="nav-link active" aria-current="page" href="{{ route('article.index') }}">Tutti gli articoli</a>
                 </li>
                 <li class="nav-item">
-          <a class="nav-link  linkCustom" aria-current="page" href="{{route('careers')}}">Lavora con noi</a>
+          <a class="nav-link active" aria-current="page" href="{{route('careers')}}">Lavora con noi</a>
         </li>
 @auth
 <li class="nav-item">
