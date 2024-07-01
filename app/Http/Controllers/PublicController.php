@@ -19,10 +19,9 @@ class PublicController extends Controller implements HasMiddleware
             new Middleware('auth', except: ['homepage']),
         ];
     }
-    public function homepage()
-    {
-        $articles = Article::orderBy('created_at', 'desc')->take(4)->get();
-        return view('welcome',compact('articles'));
+    public function homepage() {
+        $articles = Article::where('is_accepted', true)->orderBy("created_at","desc")->take(4)->get();
+        return view('welcome', compact('articles'));
     }
 
     public function careers()

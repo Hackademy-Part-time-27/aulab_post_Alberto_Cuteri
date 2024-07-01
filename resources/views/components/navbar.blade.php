@@ -20,6 +20,10 @@
   <li><a class="dropdown-item" href="{{route('admin.dashboard')}}">Dashboard Admin</a></li>
   </li>
 @endif
+@if (Auth::user()->is_revisor)
+  <li><a class="dropdown-item" href="{{route('revisor.dashboard')}}">Dashboard del Revisore</a></li>
+  </li>
+  @endif
 <li class="nav-item">
   <a class="nav-link" href="{{route('article.create')}}">Inserisci un articolo</a>
 </li>
