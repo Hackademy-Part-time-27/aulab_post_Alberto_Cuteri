@@ -29,6 +29,11 @@
                             <p>Redatto il {{$article->created_at->format('d/m/Y')}} <br>
                     da {{$article->user->name}}</p>
                     <a href="{{route('article.show', $article)}}" class="btn btn-outline-secondary">Leggi</a>
+                    <p class="small text-muted my-0">
+                            @foreach ($article->tags as $tag)
+                            #{{ $tag->name }}
+                            @endforeach
+                        </p>
                         </div>
                     </div>
                 </div>
