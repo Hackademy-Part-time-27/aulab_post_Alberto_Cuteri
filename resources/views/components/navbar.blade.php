@@ -9,6 +9,10 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('homepage')}}">Home</a>
                 </li>
+                <form action="{{route('article.search')}}" method="GET" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" name="query" placeholder="Cerca tra gli articoli..." aria-label="Search">
+            <button class="btn btn-outline-secondary" type="submit">Cerca</button>
+          </form>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="{{ route('article.index') }}">Tutti gli articoli</a>
                 </li>
