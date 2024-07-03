@@ -22,8 +22,8 @@ Route::get('/article/user/{user}', [ArticleController::class, 'byUser'])->name('
 Route::get('/careers', [PublicController::class, 'careers'])->name('careers');
 Route::post('/careers/submit', [PublicController::class, 'careersSubmit'])->name('career.submit');
 Route::get('/article/search', [ArticleController::class, 'articleSearch'])->name('article.search');
+
 Route::middleware('admin')->group(function(){
-    
     Route::put('/admin/edit/tag/{tag}', [AdminController::class, 'editTag'])->name('admin.editTag');
     Route::put('/admin/edit/category/{category}', [AdminController::class, 'editCategory'])->name('admin.editCategory');
     Route::patch('/admin/{user}/set-admin',[AdminController::class,'setAdmin'])->name('admin.setAdmin');
