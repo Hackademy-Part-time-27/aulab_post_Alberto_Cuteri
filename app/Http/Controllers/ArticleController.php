@@ -142,7 +142,7 @@ class ArticleController extends Controller implements HasMiddleware
         if($request->image) {
             Storage::delete($article->image);
             $article->update([
-                'image' => $request->file('image')->store('public/image'),
+                'image' => $request->file('image')->store('public/images'),
             ]);
         }
 
@@ -171,6 +171,12 @@ class ArticleController extends Controller implements HasMiddleware
      */
     public function destroy(Article $article)
     {
-        //
+        foreach($article->tags as $tag) {
+            $article->tags()->detach($tag);
+        }
+
+        $article->delete();
+
+        return redirect()->with('message', 'Articolo eliminato con successo!');
     }
 }
