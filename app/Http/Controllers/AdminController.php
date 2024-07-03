@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Tag;
 
 class AdminController extends Controller
 {
@@ -31,5 +32,23 @@ class AdminController extends Controller
         $user->is_writer =true;
         $user->save();
         return redirect(route('admin.dashboard'))->with('message','Hai reso $user->name redattore');
+    }
+
+    public function editTag(Request $request, Tag $tag) {
+        $request->validate([
+            'name' => 'required|unique:tags',
+        ]);
+        $tag->update([
+            'name' => strtolower($request->name),
+        ]);
+        return redirect()->back()->with('message', 'Tag aggiornato correttamente');
+    }
+
+    public function deleteTag(Tag $tag) {
+        foreach($tag->articles as $article) {
+            $article->tags()->detach($tag);
+        }
+        $tag->delete();
+        return redirect()->back()->with('message', 'Tag eliminato correttamente!');
     }
 }

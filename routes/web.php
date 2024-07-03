@@ -28,6 +28,7 @@ Route::middleware('admin')->group(function(){
     Route::patch('/admin/{user}/set-revisor',[AdminController::class,'setRevisor'])->name('admin.setRevisor');
     Route::patch('/admin/{user}/set-writer',[AdminController::class,'setWriter'])->name('admin.setWriter');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::delete('/admin/delete/tag/{tag}', [AdminController::class, 'deleteTag'])->name('admin.deleteTag');
 });
 
 Route::middleware('revisor')->group(function () {
