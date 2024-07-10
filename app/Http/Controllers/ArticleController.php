@@ -24,7 +24,7 @@ class ArticleController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $articles = Article::orderBy("created_at","desc")->get();
+        $articles = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->get();
         return view('article.index', compact('articles'));
     }
 /**
@@ -177,6 +177,6 @@ class ArticleController extends Controller implements HasMiddleware
 
         $article->delete();
 
-        return redirect()->with('message', 'Articolo eliminato con successo!');
+        return redirect(route('writer.dashboard'))->with('message', 'Articolo eliminato con successo!');
     }
 }

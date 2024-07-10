@@ -36,7 +36,7 @@
             <div class="row justify content-center">
                 <div class="col-12">
                     <h2>Richieste per ruolo di redattore</h2>
-                    <x-requests-table :roleRequests="$writerRequests" role="revisore"/>
+                    <x-requests-table :roleRequests="$writerRequests" role="redattore"/>
                 </div>
             </div>
         </div>
